@@ -2,8 +2,10 @@ import Image from "next/image";
 import { Card } from "../Card/Card";
 
 import styles from "./TossResults.module.css";
+import { useTranslations } from "next-intl";
 
 export const TossResults = ({ coinTosses }: { coinTosses: number[][] }) => {
+  const t = useTranslations();
   return (
     <Card>
       <h3>Coin Tosses:</h3>
@@ -27,7 +29,9 @@ export const TossResults = ({ coinTosses }: { coinTosses: number[][] }) => {
             </div>
 
             <p className={styles.tossResultText}>
-              <b>Line {index + 1}: </b>
+              <b>
+                {t("ui.line")} {index + 1}:{" "}
+              </b>
               {toss.map((coin) => (coin === 3 ? "H" : "T")).join(", ")}
             </p>
           </div>

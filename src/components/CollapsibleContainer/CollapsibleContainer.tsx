@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./CollapsibleContainer.module.css";
 import { Button } from "../Button/Button";
+import { useTranslations } from "next-intl";
 
 export const CollapsibleContainer = ({
   title,
@@ -12,6 +13,7 @@ export const CollapsibleContainer = ({
   defaultOpen?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const t = useTranslations();
   return (
     <div className={styles.collapsibleContainer}>
       <div className={styles.title}>{title}</div>
@@ -50,7 +52,9 @@ export const CollapsibleContainer = ({
           className={styles.closeButton}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? "Hide details" : "View details"}
+          {isOpen
+            ? t("collapsibleContainer.hideDetails")
+            : t("collapsibleContainer.viewDetails")}
         </Button>
       </div>
     </div>

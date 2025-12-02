@@ -7,7 +7,8 @@
     "dev": "npm run generate && next dev --turbopack --port 4004",
     "build": "next build --turbopack",
     "start": "next start --port 4004",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-translations": "npx tsx --env-file=.env scripts/generate-translations.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",
@@ -19,8 +20,10 @@
     "@vercel/analytics": "^1.5.0",
     "ai": "^5.0.45",
     "date-fns": "^4.1.0",
+    "is-plain-obj": "^4.1.0",
     "next": "15.5.2",
     "next-auth": "^5.0.0-beta.29",
+    "next-intl": "^4.4.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-markdown": "^10.1.0",

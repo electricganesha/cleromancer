@@ -3,9 +3,11 @@
 import { useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { Button } from "../Button/Button";
+import { useTranslations } from "next-intl";
 
 export default function SignInPopupButton() {
   const { update } = useSession(); // update() will refresh session in next-auth v5
+  const t = useTranslations();
 
   const openPopup = useCallback(() => {
     const w = 600,
@@ -74,7 +76,7 @@ export default function SignInPopupButton() {
           d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"
         />
       </svg>
-      <span>Sign in</span>
+      <span>{t("navbar.signIn")}</span>
     </Button>
   );
 }

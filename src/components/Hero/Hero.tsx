@@ -2,68 +2,79 @@ import { FC } from "react";
 
 import styles from "./Hero.module.css";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export const Hero: FC = () => {
+  const t = useTranslations();
+
   return (
     <section className={styles.hero}>
-      <Image
-        src="/logo/logo_white.png"
-        alt="aiChing Logo"
-        width={128}
-        height={128}
-      />
-      <h1>aiChing</h1>
-      <p>
-        Discover ancient wisdom through the digital casting of coins. Let the
-        Book of Changes guide your path with timeless insights.
-      </p>
-      <div className={styles.features}>
-        <div className={styles.featureBox}>
-          <span style={{ fontSize: 32 }}>⛩️</span>
-          <h1>Ancient Wisdom</h1>
-          <p>Access 5,000 years of Chinese philosophical guidance</p>
+      <div className={styles.hero__content}>
+        <Image
+          src="/logo/logo_white.png"
+          alt="Cleromancer Logo"
+          width={96}
+          height={96}
+        />
+        <h1 className={styles.hero__title}>Cleromancer</h1>
+        <p>{t("hero.description")}</p>
+        <div className={styles.features}>
+          <div className={styles.featureBox}>
+            <div>
+              <span style={{ fontSize: 18 }}>⛩️</span>
+              <h1>{t("hero.features.ancientWisdom.title")}</h1>
+            </div>
+            <p>{t("hero.features.ancientWisdom.description")}</p>
+          </div>
+          <div className={styles.featureBox}>
+            <div>
+              <span style={{ fontSize: 18 }}>🎲</span>
+              <h1>{t("hero.features.digitalCasting.title")}</h1>
+            </div>
+            <p>{t("hero.features.digitalCasting.description")}</p>
+          </div>
+          <div className={styles.featureBox}>
+            <div>
+              <span style={{ fontSize: 18 }}>☯️</span>
+              <h1>{t("hero.features.personalInsights.title")}</h1>
+            </div>
+            <p>{t("hero.features.personalInsights.description")}</p>
+          </div>
+          <div className={styles.featureBox}>
+            <div>
+              <span style={{ fontSize: 18 }}>🤖</span>
+              <h1>{t("hero.features.aiInterpretation.title")}</h1>
+            </div>
+            <p>{t("hero.features.aiInterpretation.description")}</p>
+          </div>
         </div>
-        <div className={styles.featureBox}>
-          <span style={{ fontSize: 32 }}>🎲</span>
-
-          <h1>Digital Casting</h1>
-
-          <p>Authentic coin tossing simulation with true randomness</p>
-        </div>
-        <div className={styles.featureBox}>
-          <span style={{ fontSize: 32 }}>☯️</span>
-
-          <h1>Personal Insights</h1>
-
-          <p>Tailored interpretations based on your intentions</p>
-        </div>
-      </div>
-      <button
-        className={styles.hero__button}
-        onClick={() => {
-          const nextSection = document.getElementById("main-layout");
-          if (nextSection) {
-            nextSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }}
-      >
-        Start Your Journey
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6"
+        <button
+          className={styles.hero__button}
+          onClick={() => {
+            const nextSection = document.getElementById("main-layout");
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"
-          />
-        </svg>
-      </button>
-      <h3>No registration required • Free to use • Ancient wisdom awaits</h3>
+          {t("hero.startYourJourney")}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"
+            />
+          </svg>
+        </button>
+        <h3>{t("hero.subtitle")}</h3>
+      </div>
     </section>
   );
 };

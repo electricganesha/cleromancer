@@ -3,6 +3,7 @@
 import { FC } from "react";
 
 import styles from "./Intention.module.css";
+import { useTranslations } from "next-intl";
 
 interface IntentionProps {
   showIntention: boolean;
@@ -15,11 +16,12 @@ export const Intention: FC<IntentionProps> = ({
   intention,
   setIntention,
 }) => {
+  const t = useTranslations();
   return (
     <div className={styles.intention}>
       {showIntention ? (
         <textarea
-          placeholder="E.g. What should I do today?"
+          placeholder={t("home.intentionPlaceholder")}
           className={styles.intentionTextarea}
           onInput={(e) => setIntention((e.target as HTMLTextAreaElement).value)}
         ></textarea>

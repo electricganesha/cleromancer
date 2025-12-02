@@ -1,8 +1,10 @@
+"use client";
+
 import { WilhelmHexagram } from "@/types/wilhelm";
 import { Card } from "../Card/Card";
+import { useTranslations } from "next-intl";
 
 import styles from "./HexagramText.module.css";
-import { Spinner } from "../Spinner/Spinner";
 import Markdown from "react-markdown";
 
 // Function to render the hexagram using SVG
@@ -87,18 +89,21 @@ export const HexagramText: React.FC<HexagramTextProps> = ({
   hexagramText,
   interpretation: { error, result },
 }) => {
+  const t = useTranslations();
+  const hexNum = hexagramData?.number;
+
   return (
     <div style={{ width: "100%" }}>
       <Card>
         <div className={styles.hexagramText}>
           {renderHexagram(hexagram, 6)}
-          <h3>{hexagramData?.name}</h3>
+          <h3>{hexNum ? t(`hexagrams.${hexNum}.name`) : hexagramData?.name}</h3>
         </div>
       </Card>
       <hr className={styles.divider}></hr>
       <Card>
         <u>
-          <h3>Interpretation</h3>
+          <h3>{t("ui.interpretation")}</h3>
         </u>
         <div className={styles.interpretation}>
           {error && <div style={{ color: "red" }}>Error: {error}</div>}
@@ -106,79 +111,84 @@ export const HexagramText: React.FC<HexagramTextProps> = ({
         </div>
       </Card>
 
-      {hexagramText && (
+      {hexagramText && hexNum && (
         <>
           <Card>
             <p>
-              <b>Lower Trigram:</b> {trigrams?.lower?.name}
+              <b>{t("ui.lowerTrigram")}:</b> {trigrams?.lower?.name}
             </p>
             <p>
-              <b>Upper Trigram:</b> {trigrams?.upper?.name}
+              <b>{t("ui.upperTrigram")}:</b> {trigrams?.upper?.name}
             </p>
           </Card>
           <hr className={styles.divider}></hr>
           <Card>
             <u>
-              <h3> Symbolism</h3>
+              <h3>{t("ui.symbolism")}</h3>
             </u>
             <p>
-              <b>Hexagram Number:</b> {hexagramData?.number}
+              <b>{t("ui.hexagramNumber")}:</b> {hexNum}
             </p>
-            <p>{hexagramText?.wilhelm_symbolic}</p>
+            <p>{t(`hexagrams.${hexNum}.symbolic`)}</p>
           </Card>
           <hr className={styles.divider}></hr>
           <Card>
             <u>
-              <h3>Judgment</h3>
+              <h3>{t("ui.judgment")}</h3>
             </u>
             <p>
-              <b>Original Text:</b> {hexagramText?.wilhelm_judgment.text}
+              <b>{t("ui.originalText")}:</b>{" "}
+              {t(`hexagrams.${hexNum}.judgment.text`)}
             </p>
             <p>
-              <b>Comments:</b> {hexagramText?.wilhelm_judgment.comments}
-            </p>
-          </Card>
-          <hr className={styles.divider}></hr>
-          <Card>
-            <u>
-              <h3>Image</h3>
-            </u>
-            <p>
-              <b>Original Text:</b> {hexagramText?.wilhelm_image.text}
-            </p>
-            <p>
-              <b>Comments:</b> {hexagramText?.wilhelm_image.comments}
+              <b>{t("ui.comments")}:</b>{" "}
+              {t(`hexagrams.${hexNum}.judgment.comments`)}
             </p>
           </Card>
           <hr className={styles.divider}></hr>
           <Card>
             <u>
-              <h3>Lines</h3>
+              <h3>{t("ui.image")}</h3>
             </u>
-            {hexagramText &&
-              Object.entries(hexagramText.wilhelm_lines).map(
-                ([_index, line]) => (
-                  <div
-                    key={_index}
-                    style={{
-                      borderBottom:
-                        Number(_index) !==
-                        Object.entries(hexagramText.wilhelm_lines).length
-                          ? `1px solid var(--shadow)`
-                          : "none",
-                      marginBottom: 10,
-                    }}
-                  >
-                    <h4>Line {_index}</h4>
-                    <p>
-                      <b>Original Text:</b> {line.text}
-                    </p>
-                    <p>
-                      <b>Comments:</b> {line.comments}
-                    </p>
-                  </div>
-                )
-              )}
+            <p>
+              <b>{t("ui.originalText")}:</b>{" "}
+              {t(`hexagrams.${hexNum}.image.text`)}
+            </p>
+            <p>
+              <b>{t("ui.comments")}:</b>{" "}
+              {t(`hexagrams.${hexNum}.image.comments`)}
+            </p>
+          </Card>
+          <hr className={styles.divider}></hr>
+          <Card>
+            <u>
+              <h3>{t("ui.lines")}</h3>
+            </u>
+            {Object.entries(hexagramText.wilhelm_lines).map(([lineIndex]) => (
+              <div
+                key={lineIndex}
+                style={{
+                  borderBottom:
+                    Number(lineIndex) ===
+                    Object.entries(hexagramText.wilhelm_lines).length
+                      ? "none"
+                      : `1px solid var(--shadow)`,
+                  marginBottom: 10,
+                }}
+              >
+                <h4>
+                  {t("ui.line")} {lineIndex}
+                </h4>
+                <p>
+                  <b>{t("ui.originalText")}:</b>{" "}
+                  {t(`hexagrams.${hexNum}.lines.${lineIndex}.text`)}
+                </p>
+                <p>
+                  <b>{t("ui.comments")}:</b>{" "}
+                  {t(`hexagrams.${hexNum}.lines.${lineIndex}.comments`)}
+                </p>
+              </div>
+            ))}
           </Card>
         </>
       )}

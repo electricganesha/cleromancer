@@ -1,0 +1,104 @@
+.mainLayout {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16;
+    flex-wrap: wrap;
+
+    h3 {
+        font-size: 1.6rem;
+        color: var(--primary);
+        margin: 0;
+    }
+
+    p {
+        margin: 16px 0 24px 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        max-width: 100%;
+        flex-wrap: nowrap;
+    }
+}
+
+.responsiveBtns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 16px;
+    width: 50%;
+
+    > div {
+        width: 50%;
+
+        button {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100% !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+}
+
+.intention {
+    margin-top: 64px;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../../../public/bg-bw.jpg);
+    background-size: cover;
+    background-position: center;
+    color: var(--background);
+    text-shadow: 0px 0px 2px var(--shadow);
+    padding: 24px 0;
+
+    @media screen and (max-width: 600px) {
+        padding: 24px;
+        width: 100%;
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 24;
+    width: 100%;
+    padding: 24px 0;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        padding: 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.tossMethod {
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../../../public/bg-bw.jpg);
+    background-size: cover;
+    background-position: top center;
+    color: var(--background);
+    text-shadow: 0px 0px 2px var(--shadow);
+    padding: 24px;
+
+    @media screen and (max-width: 600px) {
+        padding: 24px;
+        width: 100%;
+    }
+}
+
+.canvas {
+    width: 540px;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
