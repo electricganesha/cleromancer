@@ -1,6 +1,6 @@
-# IChingify
+# Cleromancer
 
-**IChingify** is a modern web application for consulting the I‑Ching (易經), or Book of Changes—one of humanity’s oldest works of wisdom. The I‑Ching is not about predicting the future, but about self‑reflection and understanding the patterns of change in life. This app brings the ancient practice into the digital age, making it accessible, meaningful, and respectful of its roots.
+**Cleromancer** is a modern web application for consulting the I‑Ching (易經), or Book of Changes—one of humanity’s oldest works of wisdom. The I‑Ching is not about predicting the future, but about self‑reflection and understanding the patterns of change in life. This app brings the ancient practice into the digital age, making it accessible, meaningful, and respectful of its roots.
 
 ## About the I‑Ching
 
@@ -44,8 +44,8 @@ This app is designed for daily meditation, guidance in decision‑making, or sim
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/ichingify.git
-   cd ichingify
+   git clone https://github.com/your-username/cleromancer.git
+   cd cleromancer
    ```
 
 2. Install dependencies:
